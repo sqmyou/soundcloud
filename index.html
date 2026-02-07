@@ -2,91 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SoundCloud Player</title>
+  <title>Hambadem Hoes – SoundCloud Player</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     body {
       margin: 0;
       background: #121212;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
     }
 
-    .container {
+    .player {
       width: 100%;
       max-width: 600px;
       padding: 20px;
-      text-align: center;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: none;
-      margin-bottom: 12px;
-    }
-
-    button {
-      padding: 10px 24px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      background: #ff5500;
-      color: #fff;
-    }
-
-    #player {
-      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>SoundCloud Player</h1>
-
-    <input
-      id="scUrl"
-      type="text"
-      placeholder="Paste SoundCloud link here"
-    />
-
-    <button onclick="loadTrack()">Play</button>
-
-    <div id="player"></div>
+  <div class="player">
+    <iframe
+      width="100%"
+      height="166"
+      scrolling="no"
+      frameborder="no"
+      allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/longjonson01/hambadem-hoes&auto_play=true">
+    </iframe>
   </div>
-
-  <script>
-    function loadTrack() {
-      let url = document.getElementById("scUrl").value.trim();
-      if (!url) return;
-
-      // Remove tracking/query params
-      url = url.split("?")[0];
-
-      const embedUrl =
-        "https://w.soundcloud.com/player/?url=" +
-        encodeURIComponent(url) +
-        "&auto_play=true";
-
-      document.getElementById("player").innerHTML = `
-        <iframe
-          width="100%"
-          height="166"
-          scrolling="no"
-          frameborder="no"
-          allow="autoplay"
-          src="${embedUrl}">
-        </iframe>
-      `;
-    }
-  </script>
 </body>
 </html>
